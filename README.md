@@ -14,9 +14,6 @@ This animation was created by combining multiple frames:
 
 
 
-### Generated Video  
-This video was created by combining multiple frames:  
-[Click here to view the video](FrameOutput/output_video.mp4)
 
 
 ## Saving Your Graph
