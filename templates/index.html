@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+</head>
+<body>
+    <div id="calculator" style="width: 2000px; height: 800px;"></div>
+    //script này chịu trách nhiệm render màu các hàm bezier trên desmos
+    <script type="text/javascript">
+        const convertColor = (r, g, b) => {
+            return (r.toString(16) + g.toString(16) + b.toString(16));
+        }
+        var elt = document.getElementById("calculator");
+        calculator = Desmos.GraphingCalculator(elt, {
+            expressionsCollapsed: false
+        });
+
+        let shape = "{{ shape }}".split(",");
+        calculator.setMathBounds({
+            left: -shape[0],
+            right: 0,
+            bottom: -shape[1],
+            top: 0
+        });
+        let gCount = 0;
+        
+        let latex = '{{ latex }}'.replace(" ", "").split("!");
+        let colors = '{{ colors }}'.split("~")
+        let points = '{{ points }}'.split("~")
+
+        for (bezier of latex) {
+            calculator.setExpression({ id: gCount, latex: '-' + bezier, color: Desmos.Colors.BLACK });
+            gCount++;
+        }
+        for (let i = 0; i < points.length; i++) {
+            calculator.setExpression({ id: gCount, latex: points[i], color: "#" + colors[i]})
+            gCount++;
+        }
+    </script>
+</body>
+</html>
