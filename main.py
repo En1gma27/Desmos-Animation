@@ -11,12 +11,19 @@ print("Enter 2 to render a multiple images and combine them into a video:")
 Mode = int(input())
 
 if Mode == 1:
-    path = os.path.join(os.path.dirname(__file__), 'desmos_animations')
-    # Render 1 ảnh duy nhất, lấy tên file từ dòng lệnh
+    # Đặt đường dẫn đúng
+    Path = r"D:\DesmosBezierRenderer\desmos_animations\desmos_animations"
+    os.chdir(Path)
+
+    # Lấy tên file ảnh
     if len(sys.argv) < 2:
-        print("Please enter the image file name, for example: python page.py name.png")
-        exit(1)
-    filename = sys.argv[1]
+        filename = input("Please enter the image file name (ex: test.png): ")
+    else:
+        filename = sys.argv[1]
+    # Kiểm tra file tồn tại
+    if not os.path.exists(filename):
+        print(f"File {filename} not found in {Path}")
+        sys.exit(1)
     @app.route("/")
     def plot_image():
 
