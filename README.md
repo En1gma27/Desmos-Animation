@@ -5,11 +5,11 @@
 ## Demo
 
 ### Converted Image    
-This image was converted into Bezier curve lattices:  
+This image is the output after converting the original image into Bezier curve lattices.:  
 <img src="FrameOutput/ezgif-frame-001.png" alt="Converted Frame">
 
 ### Generated Animation  
-This animation was created by combining multiple frames:  
+This animation was made from frames in the FrameOutput folder. These frames were converted from frames in the FrameInput folder. So, please use a tool to extract frames from a video before running the program. Make sure each frame in the FrameInput folder has a size of 480x336 to avoid long processing times.:
 <img src="FrameOutput/output_video.gif" alt="Generated Animation">
 
 
